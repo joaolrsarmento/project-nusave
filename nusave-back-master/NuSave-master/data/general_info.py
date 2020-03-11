@@ -19,7 +19,7 @@ class GeneralInfo():
         data = []
         for month in GeneralInfo.month_list:
             dataframe = pd.read_json('./monthjson/'+month + '.json')
-            dataframe.set_index(inplace=True, keys='Nome')
+            #dataframe.set_index(inplace=True, keys='Nome')
             data.append(dataframe)
         self.data = data
         curr_month = pd.read_json('curr_month.json')
