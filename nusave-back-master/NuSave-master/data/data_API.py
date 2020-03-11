@@ -1,8 +1,7 @@
 import json
-import pandas as pd
-from general_info import GeneralInfo
 from statistics import Statistics
 from advisor import UserAdvisor
+from rpg import RPGFrame
 
 
 class DataAPI:
@@ -18,6 +17,9 @@ class DataAPI:
             return self.__statisticAct(info)
         if feature == 'advisor':
             return self.__advisorAct(info)
+        if feature == 'RPG':
+            return self.__rpgAct(info)
+        return None
 
     def __statisticAct(self, info):
         stat = Statistics()
@@ -46,3 +48,20 @@ class DataAPI:
             filter = info['filter']
             instruction = ID + ',' + action + ',' + value + ',' + filter
             return adv.readInstruction(instruction)
+
+    def __rpgAct(self, info):
+        rpg = RPGFrame()
+        request = info['request']
+        if request == 'update':
+            rpg.updateRPG()
+            return None
+        if request == 'summary':
+            ID = info['ID']
+            userframe = rpg.getUserRPGInfo(ID)
+            dict = {}
+            dict['ID'] = ID
+            dict['xp'] = userframe['Xp']
+            dict['nivel'] = userframe['Level']
+            dict['quest'] = userframe['Quest']
+            return json.dumps(dict)
+        return None

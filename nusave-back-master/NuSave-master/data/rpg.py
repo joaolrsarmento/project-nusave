@@ -15,21 +15,19 @@ class RPGFrame(Statistics):
         self.rpg_data.to_json('rpg_data.json')
         self.rpg_data.set_index('Nome', inplace=True)
         
-    def userRPGInfo(self, ID):
+    def getUserRPGInfo(self, ID):
         ''':return DataFrame'''
         return self.rpg_data.loc[ID]
-
 
     def __updateLevel(self):
         #da reward
         #atualiza os niveis
         #atualiza as missoes mensais
-        for ID in self.rpg_data['Nome']:
-            if(self.__wasSuccessful(ID)):
+        for ID in self.rpg_data.index:
+            if(self.__wasUserSuccessful(ID)):
                 self.rpg_data['Xp'][ID] = self.rpg_data['Xp'][ID] + 50
                 self.rpg_data['Level'][ID] = self.__userLevel(ID)
         self.rpg_data['Quest'] = self.rpg_data['Level'].apply(self.__questValue)
-
 
     def __wasUserSuccessful(self, ID):
         aux_data = self.data[self.curr_index].loc[ID]

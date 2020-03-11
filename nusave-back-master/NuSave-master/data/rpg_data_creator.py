@@ -3,7 +3,10 @@ import json
 import random as rd
 import pandas as pd
 from math import inf
+from rpg import RPGFrame
+from general_info import GeneralInfo
 
+'''
 dataframe = pd.read_json('./monthjson/janeiro.json')
 nome = dataframe['Nome'].copy()
 n = dataframe.shape[0]
@@ -25,9 +28,32 @@ rpg_data = pd.DataFrame(frame)
 rpg_data["Nome"] = nome
 rpg_data.to_json('rpg_data.json')
 print(rpg_data)
+'''
+'''
+rpg = RPGFrame()
+rpg.updateRPG()
+'''
+'''
+n = 10000
+saques = []
+for i in range(0, n):
+    saques.append(rd.uniform(0, 400))
 
+info = GeneralInfo()
+for month in GeneralInfo.month_list:
+    aux = pd.read_json('./monthjson/'+ month + '.json')
+    aux['Saques'] = saques
+    aux.to_json('./monthjson/'+ month + '.json')
+'''
+api = DataAPI()
+x = {
+    "ID": "IHMEMNDNYNRCZDCTZDUY",
+    "feature": "RPG",
+    "request": "summary"
+}
 
-
+inst = json.dumps(x)
+print(api.readInstructions(inst))
 
 
 
