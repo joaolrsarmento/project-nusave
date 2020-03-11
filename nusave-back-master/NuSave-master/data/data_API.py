@@ -25,7 +25,7 @@ class DataAPI:
         stat = Statistics()
         percents = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
         dict = {}
-        dict["user_ID"] = info['ID']
+        dict["ID"] = info['ID']
         dict["user_last_month"] = stat.getUserLastMonth(info['ID'], info['filter'])
         dict["user_average"] = stat.getUserAverage(info['ID'], info['filter'])
         dict["category_average"] = stat.getCategoryAverage(info['ID'], info['filter'])
