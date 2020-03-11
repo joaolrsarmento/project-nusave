@@ -24,7 +24,7 @@ class UserAdvisor(Statistics):
             filter = info[3]
             return self.__expendingAdvice(ID, valor, filter)
         else:
-            return None
+            return ''
 
     def __decodeInstruction(self, instruction: str):
         return instruction.split(sep=',')
@@ -35,7 +35,7 @@ class UserAdvisor(Statistics):
             return '%s. Houve uma grande entrada na sua conta recentemente. Organize' \
                    ' parte desse dinheiro para cuprir com a quest desse mes :).'% ID
         else:
-            return None
+            return ''
 
     def __expendingAdvice(self, ID: str, valor: float, filter: str):
         mean_user = self.getUserAverage(ID, filter)
@@ -61,4 +61,4 @@ class UserAdvisor(Statistics):
             return ('%s. ' % ID) + mensagem1 + mensagem2 + 'Verifique seus gastos e ' \
                                                            'analise se entao de acordo com os seus planos financeiros'
         else:
-            return None
+            return ''

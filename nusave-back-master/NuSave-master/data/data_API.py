@@ -41,13 +41,17 @@ class DataAPI:
         ID = info['ID']
         action = info['action']
         value = info['value']
+        dict = {}
         if action == 'entrada':
             instruction = ID + ',' + action + ',' + value
-            return adv.readInstruction(instruction)
+            dict['message'] = adv.readInstruction(instruction)
+            return json.dumps(dict)
         if action == 'saida':
             filter = info['filter']
             instruction = ID + ',' + action + ',' + value + ',' + filter
-            return adv.readInstruction(instruction)
+            dict['message'] = adv.readInstruction(instruction)
+            return json.dumps(dict)
+        return None
 
     def __rpgAct(self, info):
         rpg = RPGFrame()
