@@ -6,8 +6,7 @@ from math import inf
 from rpg import RPGFrame
 from general_info import GeneralInfo
 
-
-rpg = RPGFrame()
+gi = GeneralInfo()
 
 ID = []
 
@@ -16,7 +15,7 @@ n = 10000
 for i in range(0,n):
     ID.append(str(i))
 
-for month in rpg.month_list:
+for month in GeneralInfo.month_list:
     dataframe = pd.read_json('./monthjson/' + month + '.json')
     dataframe['ID'] = ID
     dataframe.to_json('./monthjson/' + month + '.json')

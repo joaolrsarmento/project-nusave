@@ -4,7 +4,7 @@ from advisor import UserAdvisor
 from rpg import RPGFrame
 
 
-class DataAPI:
+class DataAPI():
     '''
     Nao se trata bem de uma API mas sim de uma classe com uma funcao que permite acessar
     features de dados de maneira mais facil ao desenvolvedor do back
