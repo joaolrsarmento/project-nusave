@@ -65,7 +65,10 @@ const Login = ({ history }) => {
 
   //const canLogin = validateEmail(email) && !!password;
 
-  //const tryLogin = () => login(email, password).then(() => history.push(routes.PERSONAL));
+const tryLogin = email => 
+  login(email)
+  .then(resp => localStorage.setItem('token', resp))
+  .then(() => history.push(routes.PROFILE));
 
   return (
     <div>
@@ -94,7 +97,7 @@ const Login = ({ history }) => {
                 </FormControl>
                 <ButtonDiv>
                     <Button variant="contained" color="primary" size="medium" /*disabled={!canLogin}*/ 
-                        onClick={localStorage.setItem('token', 1)}>
+                        onClick={()=>tryLogin(1)}>
                     Entrar
                     </Button>
                 </ButtonDiv>
@@ -111,7 +114,7 @@ const Login = ({ history }) => {
             </FormControl>
             <ButtonDiv>
                 <Button variant="contained" color="primary" size="medium" /*disabled={!canLogin}*/ 
-                    onClick={localStorage.setItem('token', 1)}>
+                    onClick={()=>tryLogin(1)}>
                 Cadastrar
                 </Button>
             </ButtonDiv>

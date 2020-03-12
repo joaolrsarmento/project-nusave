@@ -6,6 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = NuUser
         fields = '__all__'
 
+
 class StatisticsUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = StatisticsNuUser

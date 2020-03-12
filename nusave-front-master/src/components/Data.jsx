@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { maskMoney, unmaskMoney } from '../masks';
+import { changeUserData } from '../api/user';
 
 const Container = styled.div`
   width: 100%;
@@ -45,12 +46,12 @@ const Button = styled.button`
 `;
   
 export const Data = () => {
-  const [lastMonthWithdraw, setLastMonthWithdraw] = useState("1200");
+const [lastMonthWithdraw, setLastMonthWithdraw] = useState("1200");
 
-  const [financialClass, setFinancialClass] = useState("A");
-  const [region, setRegion] = useState("SP");
-  const [age, setAge] = useState("18-30");
-  const [sex, setSex] = useState("Masculino");
+const [financialClass, setFinancialClass] = useState("A");
+const [region, setRegion] = useState("SP");
+const [age, setAge] = useState(2);
+const [sex, setSex] = useState("Masculino");
 
 return (
   
@@ -153,7 +154,15 @@ return (
         </FieldDiv>
       </Box>
       <ButtonDiv>
-        <Button>salvar alterações</Button>
+        <Button 
+          onClick={()=>changeUserData(
+            {
+              financialClass: financialClass,
+              sex: sex,
+              age: age,
+              region: region,
+            }
+          )}>salvar alterações</Button>
       </ButtonDiv>
     </Container>
   </div>
