@@ -4,20 +4,11 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.db import models
+from jsonfield import JSONField
+# from django.contrib.postgres.fields import ArrayField
 
-CATEGORIES = ['Alimentação',
-             'Assinatura e serviços',
-             'Educacao',
-             'Saude',
-             'Roupas',
-             'Transporte',
-             'Saques',
-             'Outros']
-
-FILTER = ['Classe social',
-          'Idade',
-          'Região',
-          'Profissão']
+FILTERS =  ['Alimentacao', 'Assinatura_e_servicos', 'Educacao',
+                   'Beleza', 'Saude', 'Transporte', 'Outros', 'Saques']
 
           
 class AuthUserManager(BaseUserManager):
@@ -63,10 +54,9 @@ class NuUser(models.Model):
     beauty_expense = models.FloatField(default= 0)
     others_expense = models.FloatField(default= 0)
     
+class StatisticsNuUser(models.Model):
+    user_filters = JSONField()
 
-
-    def __str__(self):
-        return self.name
         
 class Profile(NuUser):
     def __init__(self):

@@ -33,3 +33,4 @@ class GeneralInfo():
         for category in GeneralInfo.category_list:
             user_category.append(data_user[category])
         return user_category
+
