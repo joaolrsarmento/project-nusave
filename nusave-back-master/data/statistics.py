@@ -1,4 +1,4 @@
-from .general_info import GeneralInfo
+from general_info import GeneralInfo
 
 
 class Statistics(GeneralInfo):
@@ -18,12 +18,6 @@ class Statistics(GeneralInfo):
 
     def getUserLastMonth(self, ID, filter):
         # retorna o os gasto total de certo usuario em certo filtro no mes passado
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 940eb1c23c4a970a864a5e79679b6dac4071e8c0
         return self.data[self.last_index][filter][ID]
 
     def getUserAverage(self, ID, filter):

@@ -1,4 +1,4 @@
-from .statistics import Statistics
+from statistics import Statistics
 import pandas as pd
 
 class RPGFrame(Statistics):
