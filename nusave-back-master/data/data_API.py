@@ -73,8 +73,3 @@ class DataAPI():
 data = DataAPI()
 
 
-print(data.readInstructions(instruction = json.dumps({
-                    "ID": 3,
-                    "feature": 'statistics',
-                    "filter": 'Alimentacao'
-                })))
