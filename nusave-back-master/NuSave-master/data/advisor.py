@@ -33,7 +33,8 @@ class UserAdvisor(Statistics):
         mean_user = self.getUserAverage(ID, 'Entrada')
         if (valor >= 0.5 * mean_user):
             return '%s. Houve uma grande entrada na sua conta recentemente. Organize' \
-                   ' parte desse dinheiro para cuprir com a quest desse mes :).'% ID
+                   ' parte desse dinheiro para cuprir com' \
+                   ' a quest desse mes :).'% self.data[self.curr_index].loc[ID]['Nome']
         else:
             return ''
 
@@ -58,7 +59,7 @@ class UserAdvisor(Statistics):
         else:
             mensagem2 = ''
         if (mensagem1 != '') | (mensagem2 != ''):
-            return ('%s. ' % ID) + mensagem1 + mensagem2 + 'Verifique seus gastos e ' \
-                                                           'analise se entao de acordo com os seus planos financeiros'
+            return ('%s. ' % self.data[self.curr_index].loc[ID]['Nome']) + mensagem1 + mensagem2 + 'Verifique seus' \
+                    ' gastos e analise se entao de acordo com os seus planos financeiros'
         else:
             return ''
