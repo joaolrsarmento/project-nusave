@@ -6,29 +6,28 @@ from math import inf
 from rpg import RPGFrame
 from general_info import GeneralInfo
 
-'''
-dataframe = pd.read_json('./monthjson/janeiro.json')
-nome = dataframe['Nome'].copy()
-n = dataframe.shape[0]
 
-columns = ['Xp', 'Level', 'Quest']
-xp_pins = [-1, 50, 200, 450, 800, 1250, 1800, 2450, 3200, 4050, 5000, 6050, 7200, 8450,
-           9800, 11250, 12800, 14450, 16200, 18050, inf]
+rpg = RPGFrame()
 
-xp = []
-level = []
-quest = []
+ID = []
 
-for i in range(0, n):
-    xp.append(rd.randint(0, 10000))
-    level.append(0)
-    quest.append(0)
-frame = {'Xp': xp, 'Level': level, 'Quest': quest}
-rpg_data = pd.DataFrame(frame)
-rpg_data["Nome"] = nome
-rpg_data.to_json('rpg_data.json')
-print(rpg_data)
-'''
+n = 10000
+
+for i in range(0,n):
+    ID.append(str(i))
+
+for month in rpg.month_list:
+    dataframe = pd.read_json('./monthjson/' + month + '.json')
+    dataframe['ID'] = ID
+    dataframe.to_json('./monthjson/' + month + '.json')
+
+dataframe = pd.read_json('rpg_data.json')
+dataframe['ID'] = ID
+dataframe.to_json('rpg_data.json')
+
+
+
+
 '''
 rpg = RPGFrame()
 rpg.updateRPG()
@@ -45,15 +44,22 @@ for month in GeneralInfo.month_list:
     aux['Saques'] = saques
     aux.to_json('./monthjson/'+ month + '.json')
 '''
+
 api = DataAPI()
 x = {
-    "ID": "IHMEMNDNYNRCZDCTZDUY",
+    "ID": 8,
     "feature": "RPG",
-    "request": "summary"
+    "request": "summary",
 }
 
-inst = json.dumps(x)
-print(api.readInstructions(inst))
+inst = json.dumps(x) #tranforma em json
+
+retorno = api.readInstructions(inst)
+#rotorno e uma string tal que seu conteudo sera mostrado pelo print
+
+print(retorno)
+print(type(retorno))
+
 
 
 

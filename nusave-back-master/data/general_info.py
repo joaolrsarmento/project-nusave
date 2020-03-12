@@ -18,11 +18,11 @@ class GeneralInfo():
     def __init__(self):
         data = []
         for month in GeneralInfo.month_list:
-            dataframe = pd.read_json('data/monthjson/'+month + '.json')
+            dataframe = pd.read_json('./monthjson/'+month + '.json')
             #dataframe.set_index(inplace=True, keys='Nome')
             data.append(dataframe)
         self.data = data
-        curr_month = pd.read_json('data/curr_month.json')
+        curr_month = pd.read_json('curr_month.json')
         self.curr_month = curr_month['month'][0]
 
     def _userCategory(self, ID: str):

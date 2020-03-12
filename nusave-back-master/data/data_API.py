@@ -34,7 +34,7 @@ class DataAPI:
             percentiles[percentage] = stat.getCategoryPercentiles(info['ID'],
                                                                   info['filter'], percentage / 100)
         dict["category_percentiles"] = percentiles
-        return json.loads(json.dumps(dict))
+        return dict
 
     def __advisorAct(self, info):
         adv = UserAdvisor()
@@ -50,7 +50,7 @@ class DataAPI:
             filter = info['filter']
             instruction = ID + ',' + action + ',' + value + ',' + filter
             dict['message'] = adv.readInstruction(instruction)
-            return json.loads(json.dumps(dict))
+            return dict
         return None
 
     def __rpgAct(self, info):
@@ -67,5 +67,5 @@ class DataAPI:
             dict['xp'] = userframe['Xp']
             dict['nivel'] = userframe['Level']
             dict['quest'] = userframe['Quest']
-            return json.loads(json.dumps(dict))
+            return dict
         return None

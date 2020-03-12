@@ -18,6 +18,7 @@ class Statistics(GeneralInfo):
 
     def getUserLastMonth(self, ID, filter):
         # retorna o os gasto total de certo usuario em certo filtro no mes passado
+        print(self.data[self.last_index].index)
         return self.data[self.last_index][filter][ID]
 
     def getUserAverage(self, ID, filter):
