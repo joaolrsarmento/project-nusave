@@ -19,13 +19,13 @@ class GeneralInfo():
         data = []
         for month in GeneralInfo.month_list:
             dataframe = pd.read_json('./monthjson/'+month + '.json')
-            #dataframe.set_index(inplace=True, keys='Nome')
+            dataframe.set_index(inplace=True, keys='ID')
             data.append(dataframe)
         self.data = data
         curr_month = pd.read_json('curr_month.json')
         self.curr_month = curr_month['month'][0]
 
-    def _userCategory(self, ID: str):
+    def _userCategory(self, ID):
         #retorna uma lista em ordem protocolada das caracteristicas que compoem a
         #categoria do usuario
         user_category = []
