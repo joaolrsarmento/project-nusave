@@ -44,6 +44,6 @@ class RPGFrame(Statistics):
         return value
 
     def __userLevel(self, ID):
-        level_limits = self._setLimits(self.rpg_data['Level'][ID], RPGFrame.level_pins)
-        return RPGFrame.level_pins.index(level_limits[1])
+        level_limits = self._setLimits(self.rpg_data['Level'][ID], RPGFrame.xp_pins)
+        return RPGFrame.xp_pins.index(level_limits[1])
 
