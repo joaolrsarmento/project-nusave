@@ -33,3 +33,5 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(create_data)
     ]
+
+data = data_API.DataAPI()

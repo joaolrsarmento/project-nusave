@@ -1,7 +1,7 @@
 import json
-from .statistics import Statistics
-from .advisor import UserAdvisor
-from .rpg import RPGFrame
+from statistics import Statistics
+from advisor import UserAdvisor
+from rpg import RPGFrame
 
 
 class DataAPI:
@@ -69,3 +69,12 @@ class DataAPI:
             dict['quest'] = userframe['Quest']
             return dict
         return None
+
+data = DataAPI()
+
+
+print(data.readInstructions(instruction = json.dumps({
+                    "ID": 3,
+                    "feature": 'statistics',
+                    "filter": 'Alimentacao'
+                })))

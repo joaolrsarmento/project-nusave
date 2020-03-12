@@ -1,4 +1,4 @@
-from .general_info import GeneralInfo
+from general_info import GeneralInfo
 
 
 class Statistics(GeneralInfo):
