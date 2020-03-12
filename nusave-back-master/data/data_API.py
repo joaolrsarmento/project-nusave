@@ -70,6 +70,5 @@ class DataAPI():
             return dict
         return None
 
-data = DataAPI()
 
 
