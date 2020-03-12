@@ -1,10 +1,12 @@
 from django.db import migrations
 import json
+import os
 
 def create_data(apps, schema_editor):
     User = apps.get_model('users', 'NuUser')
     db_alias = schema_editor.connection.alias
     
+
     file = open('data/dataset.json')
     data = json.load(file)
 
