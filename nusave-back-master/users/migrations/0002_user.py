@@ -5,7 +5,7 @@ def create_data(apps, schema_editor):
     User = apps.get_model('users', 'NuUser')
     db_alias = schema_editor.connection.alias
     
-    file = open('../data/dataset.json')
+    file = open('data/dataset.json')
     data = json.load(file)
 
     for i in range(len(data['Nome'])):
@@ -16,7 +16,6 @@ def create_data(apps, schema_editor):
         idade = data['Idade'][str(i)]
         dependentes = data['Dependentes'][str(i)]
         regiao = data['Regiao'][str(i)]
-        data_mes = data['Data'][str(i)]
         alimentacao = data['Alimentacao'][str(i)]
         assinatura = data['Assinatura_e_servico'][str(i)]
         educacao = data['Educacao'][str(i)]
@@ -39,7 +38,6 @@ def create_data(apps, schema_editor):
              age = idade,
              dependents = dependentes,
              region = regiao,
-             date = data_mes,
              food_expense = alimentacao,
              services_expense = assinatura,
              education_expense = educacao,

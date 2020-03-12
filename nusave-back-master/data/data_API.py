@@ -1,7 +1,7 @@
 import json
-from statistics import Statistics
-from advisor import UserAdvisor
-from rpg import RPGFrame
+from .statistics import Statistics
+from .advisor import UserAdvisor
+from .rpg import RPGFrame
 
 
 class DataAPI:
