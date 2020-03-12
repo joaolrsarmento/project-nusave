@@ -165,7 +165,7 @@ const OpenDataBox = ({type, onClose}) => {
           
         </div>
         <DataBoxName> {type} </DataBoxName>
-        <ShowMoreButton color="primary" onClick={()=>onClose()} >Mostrar menos</ShowMoreButton>
+        <ShowMoreButton color="primary" onClick={()=>onClose()} >Ocultar</ShowMoreButton>
     </DataBoxHeader>
     <DataBoxBody>
       <BarChart
