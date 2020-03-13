@@ -57,6 +57,8 @@ class NuUser(models.Model):
 class StatisticsNuUser(models.Model):
     user_filters = JSONField()
 
+class RPGNuUser(models.Model):
+    user_summary = JSONField()
         
 class Profile(NuUser):
     def __init__(self):

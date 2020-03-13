@@ -5,14 +5,14 @@ class RPGFrame(Statistics):
 
     def __init__(self):
         super().__init__()
-        self.rpg_data = pd.read_json('rpg_data.json')
+        self.rpg_data = pd.read_json('data/rpg_data.json')
         self.rpg_data.set_index('ID', inplace=True)
 
     def updateRPG(self):
         self.__updateLevel()
         self.rpg_data.reset_index(inplace=True)
         #qualquer dataset armazenado em um json file tem que esta com a indexacao nativa(numerica)
-        self.rpg_data.to_json('rpg_data.json')
+        self.rpg_data.to_json('data/rpg_data.json')
         self.rpg_data.set_index('ID', inplace=True)
         
     def getUserRPGInfo(self, ID):
