@@ -10,6 +10,17 @@ class DataAPI():
     features de dados de maneira mais facil ao desenvolvedor do back
     '''
 
+    def __init__(self):
+        self.stat = Statistics()
+        self.adv = UserAdvisor()
+        self.rpg = RPGFrame()
+        print('oi')
+
+    def update(self):
+        self.stat = Statistics()
+        self.adv = UserAdvisor()
+        self.rpg = RPGFrame()
+
     def readInstructions(self, instruction: json):
         info = json.loads(instruction)
         feature = info['feature']
@@ -19,25 +30,23 @@ class DataAPI():
             return self.__advisorAct(info)
         if feature == 'RPG':
             return self.__rpgAct(info)
+        if feature == 'update':
+            return None
         return None
 
     def __statisticAct(self, info):
-        stat = Statistics()
-        percents = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+        stat = self.stat
         dict = {}
         dict["ID"] = info['ID']
         dict["user_last_month"] = stat.getUserLastMonth(info['ID'], info['filter'])
         dict["user_average"] = stat.getUserAverage(info['ID'], info['filter'])
         dict["category_average"] = stat.getCategoryAverage(info['ID'], info['filter'])
-        percentiles = {}
-        for percentage in percents:
-            percentiles[percentage] = stat.getCategoryPercentiles(info['ID'],
-                                                                  info['filter'], percentage / 100)
-        dict["category_percentiles"] = percentiles
+        dict["category_percentiles"] = stat.getCategoryPercentiles(info['ID'],
+                                                                   info['filter'])
         return dict
 
     def __advisorAct(self, info):
-        adv = UserAdvisor()
+        adv = self.adv
         ID = info['ID']
         action = info['action']
         value = info['value']
@@ -54,7 +63,7 @@ class DataAPI():
         return None
 
     def __rpgAct(self, info):
-        rpg = RPGFrame()
+        rpg = self.rpg
         request = info['request']
         if request == 'update':
             rpg.updateRPG()
@@ -69,6 +78,7 @@ class DataAPI():
             dict['quest'] = userframe['Quest']
             return dict
         return None
+
 
 
 

@@ -6,9 +6,17 @@ class GeneralInfo():
     month_list = ['janeiro', 'fevereiro', 'marco', 'abril',
                   'maio', 'junho', 'julho', 'agosto',
                   'setembro', 'outubro', 'novembro', 'dezembro']
-    filter_list = ['Alimentacao', 'Assinatura_e_servicos', 'Educacao',
+    filter_list = ['Alimentacao', 'Assinatura_e_servico', 'Educacao',
                    'Beleza', 'Saude', 'Transporte', 'Outros', 'Saques']
     category_list = ['Classe','Regiao','Idade','Dependentes','Sexo','Estado_Civil']
+    category_dict = {
+        "Classe": ['A', 'B', 'C', 'D', 'E'],
+        "Regiao": ['metropolitana', 'interior'],
+        "Idade": [-1, 25, 35, 50],
+        "Dependentes": [-1, 1, 2, 3, 4],
+        "Sexo": ['masculino', 'feminino'],
+        "Estado_Civil": ['solteiro', 'relacionamento']
+    }
     info_list = ['Entrada', 'Saldo']
     age_pins = [-1, 25, 35, 50, inf]
     dependant_pins = [-1, 1, 2, 3, 4, inf]
