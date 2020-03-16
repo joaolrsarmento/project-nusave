@@ -18,12 +18,17 @@ from django.urls import path, include
 from rest_framework import routers
 from users import views
 
-router = routers.DefaultRouter()
-router.register(r'users', views.UserView)
-router.register(r'statistics', views.StatisticsUserView)
-router.register(r'rpg', views.RPGUserView)
+# router = routers.DefaultRouter()
+# router.register(r'users', views.user_detail)
+# router.register(r'statistics', views.statistics_detail)
+# router.register(r'rpg', views.rpg_detail)
 
 urlpatterns = [
     path('admin/', admin.site.urls), 
-    path('api/', include(router.urls)),      
+    path('api/users/', views.users_list),      
+    path('api/users/<int:pk>', views.user_detail),      
+    path('api/statistics/', views.statistics_list),      
+    path('api/statistics/<int:pk>', views.statistics_detail),      
+    path('api/rpg/', views.rpg_list),      
+    path('api/rpg/<int:pk>', views.rpg_detail),      
     ]
