@@ -2,6 +2,8 @@ import React, { useState, useEffect, PureComponent } from 'react';
 import styled from 'styled-components';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 
+import { getUser } from '../api/user';
+
 import {
   PieChart, Pie, Sector, Cell, Legend
 } from 'recharts';
@@ -26,6 +28,25 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#DC143C', '#A122BD'
 const w = window.innerWidth;
   
 const GeneralExpenses = () => {
+const [user, setUser] = useState('{"id":5,"account_number":"4","email":"BOZWOWUSUKCQNDYLGHMN@gmail.com","name":"BOZWOWUSUKCQNDYLGHMN","marital_status":"solteiro","gender":"feminino","social_class":"A","age":25,"dependents":0,"region":"interior","date":"","food_expense":150.596882615,"services_expense":150.596882615,"education_expense":150.596882615,"restaurants_expense":150.596882615,"house_expense":150.596882615,"debts_expense":150.596882615,"investiments_expense":150.596882615,"recreation_expense":150.596882615,"health_expense":150.596882615,"transport_expense":150.596882615,"beauty_expense":150.596882615,"others_expense":150.596882615}');
+
+useEffect(() => {
+  getUser()
+  .then(resp => setUser(resp.data));
+}, []);
+
+const data = [
+  { name: 'Alimentação', value: user.food_expense },
+  { name: 'Assinatura e serviços', value: user.services_expense },
+  { name: 'Educação', value: user.education_expense },
+  { name: 'Saúde', value: user.health_expense },
+  { name: 'Cuidados pessoais', value: user.beauty_expense },
+  { name: 'Transporte', value: user.transport_expense },
+  { name: 'Saques', value: user.debts_expense },
+  { name: 'Outros', value: user.others_expense },
+];
+
+console.log(user);
 
 return (
     <DataBoxContainer>

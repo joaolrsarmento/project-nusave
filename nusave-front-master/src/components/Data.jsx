@@ -46,7 +46,8 @@ const Button = styled.button`
 `;
   
 export const Data = () => {
-const [lastMonthWithdraw, setLastMonthWithdraw] = useState("1200");
+const [saques, setSaques] = useState(1200);
+const [alimentacao, setAlimentacao] = useState(1200);
 
 const [financialClass, setFinancialClass] = useState("A");
 const [region, setRegion] = useState("SP");
@@ -62,15 +63,22 @@ return (
         <FieldDiv>
           <NameDiv>Gasto no último mês com saques:</NameDiv>
           <InputDiv>
-            <input value={maskMoney(lastMonthWithdraw)} maxLength="7"
+            <input value={saques} maxLength="7"
               onChange={event => {
-                setLastMonthWithdraw(unmaskMoney(event.target.value));
+                //setSaques(event.target.value);
+                console.log(saques);
             }}/>
           </InputDiv>
         </FieldDiv>
         <FieldDiv>
           <NameDiv>Gasto no último mês com alimentação:</NameDiv>
-          <InputDiv><input /></InputDiv>
+          <InputDiv>
+            <input value={alimentacao} maxLength="7"
+              onChange={event => {
+                //setAlimentacao(event.target.value);
+                console.log(alimentacao);
+            }}/>
+          </InputDiv>
         </FieldDiv>
         <FieldDiv>
           <NameDiv>Gasto no último mês com transporte:</NameDiv>
@@ -155,14 +163,7 @@ return (
       </Box>
       <ButtonDiv>
         <Button 
-          onClick={()=>changeUserData(
-            {
-              financialClass: financialClass,
-              sex: sex,
-              age: age,
-              region: region,
-            }
-          )}>salvar alterações</Button>
+          onClick={()=>changeUserData()}>salvar alterações</Button>
       </ButtonDiv>
     </Container>
   </div>

@@ -23,7 +23,7 @@ import DataIcon from '@material-ui/icons/PieChart';
 import Presentation from '../containers/Presentation';
 import Profile from '../containers/Profile';
 import Advises from '../containers/Advises';
-import Statistics from '../containers/statistics';
+import Statistics from '../containers/Statistics';
 import Feed from '../containers/Feed';
 import Data from '../containers/Data';
 

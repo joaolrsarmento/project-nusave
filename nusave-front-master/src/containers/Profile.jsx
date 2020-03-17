@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Profile } from '../components/Profile';
 
-import { getName } from '../api/login';
+import { getName } from '../api/user';
 
 export default () => {
   const [name, setName] = useState("Eduardo");

@@ -101,16 +101,17 @@ const SelectDiv = styled.div`
   margin: 0 18px 0 18px;
 `;
 
-const data = [
-  { name: '0-25%', media: 2000 },
-  { name: '25%-50%', media: 2500 },
-  { name: '50%-75%', media: 2780 },
-  { name: '75%-100%', media: 4000 },
-];
+const COLORS = ['#ADD8E6', '#82CAFA', '#1589FF', '#2B65EC', '#2222FF'];
 
-const COLORS = ['#ADD8E6', '#82CAFA', '#1589FF', '#2B65EC'];
+const ClosedDataBox = ({type, statistics, onOpen}) => {
 
-const ClosedDataBox = ({type, onOpen}) => {
+  const data = [
+    { name: '0-20%', media: statistics['20'] },
+    { name: '20%-40%', media: statistics['20'] },
+    { name: '40%-60%', media: statistics['40'] },
+    { name: '60%-80%', media: statistics['60'] },
+    { name: '80%-100%', media: statistics['80'] }
+  ];
 
   return (
     <DataBoxContainer>
@@ -148,11 +149,19 @@ const ClosedDataBox = ({type, onOpen}) => {
   );
 };
 
-const OpenDataBox = ({type, onClose}) => {
+const OpenDataBox = ({type, statistics, onClose}) => {
   const [financialClass, setFinancialClass] = useState("A");
   const [region, setRegion] = useState("SP");
   const [age, setAge] = useState("18-30");
   const [sex, setSex] = useState("Masculino");
+
+  const data = [
+    { name: '0-20%', media: statistics['20'] },
+    { name: '20%-40%', media: statistics['20'] },
+    { name: '40%-60%', media: statistics['40'] },
+    { name: '60%-80%', media: statistics['60'] },
+    { name: '80%-100%', media: statistics['80'] }
+  ];
 
   function showTips(){
     alert("-Quando for fazer as compras do mês, dê preferência a supermercados.\n-Consumidores que adquirem produtos em padarias, por exemplo, acabam gastando cerca de 30% a mais pelos mesmos alimentos.\n-Na escola, faça com que seus filhos comam alimentos de casa ao invés de comprar na lanchonete (você pode preparar um pão recheado com queijo e também cortar frutas, por exemplo). Você economizaria muito!\n-Congele as refeições que sobrarem e os alimentos em excesso na despensa. Deste modo, você preserva os alimentos e evita desperdícios.\n-Organize alimentos por data de validade na hora de guardá-los (deixando os alimentos com vencimento mais próximo à vista), para evitar que sejam esquecidos e desperdiçados no futuro.");
@@ -228,14 +237,17 @@ const OpenDataBox = ({type, onClose}) => {
       Abaixo serão adicionados dados e dicas sobre a forma como as pessoas gastam para economizar no setor</div>
     <SpendsButton  onClick={() => showTips()} >Dicas de gasto</SpendsButton>
     </DataBoxContainer>
-  );
+  )
 };
 
-const DataBox = ({type}) => {
+const DataBox = ({type, statistics}) => {
   const [isOpen, setOpen] = useState(false);
+  console.log(statistics);
   return (
-    isOpen ? <OpenDataBox type = {type} onClose = {()=>{setOpen(false)}} /> :
-    <ClosedDataBox type = {type} onOpen = {()=>{setOpen(true)}} />
+    isOpen ? <OpenDataBox type = {type} statistics = {statistics}
+    onClose = {()=>{setOpen(false)}} /> :
+    <ClosedDataBox type = {type} statistics = {statistics}
+    onOpen = {()=>{setOpen(true)}} />
   );
 };
 
