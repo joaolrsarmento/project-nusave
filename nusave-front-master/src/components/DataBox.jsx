@@ -39,16 +39,6 @@ export const DataBoxName = styled.div`
   color: #404040;
 `;
 
-/*export const ShowMoreButton = styled(Button)`
-  text-align: center;
-  font-size: 14px;
-  border: 1px solid #81259D;
-  height: 24px;
-  width: 150px;
-  padding: 1px;
-  margin-right: 15px;
-`;*/
-
 const ShowMoreButton = styled.button`
   text-align: center;
   font-size: 14px;
@@ -101,6 +91,18 @@ const SelectDiv = styled.div`
   margin: 0 18px 0 18px;
 `;
 
+const Image = styled.div`
+  margin: 10px 10px 0 0;
+`;
+
+const AdviseDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 20px;
+  margin: 0 6% 24px 6%;
+`;
+
 const COLORS = ['#ADD8E6', '#82CAFA', '#1589FF', '#2B65EC', '#2222FF'];
 
 const ClosedDataBox = ({type, statistics, onOpen}) => {
@@ -131,7 +133,7 @@ const ClosedDataBox = ({type, statistics, onOpen}) => {
           top: 16, right: 24, left: 0, bottom: 8,
         }}
       >
-        <XAxis dataKey="name" />
+        <XAxis dataKey="name"/>
         <YAxis />
         <Tooltip />
         <Bar dataKey="media" fill="#8884d8" >
@@ -143,8 +145,16 @@ const ClosedDataBox = ({type, statistics, onOpen}) => {
         </Bar>
       </BarChart>
     </DataBoxBody>
-    <div style={{margin:'6px 0 0 0', color:'#1589FF', width:'100%', textAlign:'center'}}>
-      Distribuição de gastos em reais, baseada na sua faixa de renda, localização, idade e sexo</div>
+    <div style={{margin:'6px 0 0 0', color:'#1589FF', width:'100%', textAlign:'center', fontSize:'20px'}}>
+      Distribuição de gastos em reais, baseada na sua faixa de renda, localização, idade e sexo.</div>
+    <div style={{margin:'6px 12px 6px 12px', color:'#1589FF', width:'86%', textAlign:'center', fontSize:'16px'}}>
+      As colunas representam a média de gasto, entre pessoas de perfil semelhante ao seu, dos 20% mais econômicos (esquerda) aos 20% menos econômicos (direita). Você se encontra na faixa destacada em roxo.</div>
+    <AdviseDiv>
+      <Image><img style={{width:'25px', height:'25px'}} src="exclamation.png" /></Image>   
+        <div style={{marginTop:'6px'}}>
+          Gasto acima da média com {type}. <a href="">Veja como economizar na sua região.</a>
+        </div>
+    </AdviseDiv>
     </DataBoxContainer>
   );
 };
